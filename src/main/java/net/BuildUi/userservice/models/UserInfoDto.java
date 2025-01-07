@@ -8,9 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import net.BuildUi.userservice.entity.UserInfo;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
@@ -18,6 +16,8 @@ import net.BuildUi.userservice.entity.UserInfo;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Builder
+@Getter
+@Setter
 public class UserInfoDto {
     @Id
     @JsonProperty("user_id")

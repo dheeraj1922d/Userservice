@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import net.BuildUi.userservice.entity.UserInfo;
 import net.BuildUi.userservice.models.UserInfoDto;
 import net.BuildUi.userservice.repository.UserRepository;
+import net.BuildUi.userservice.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
@@ -15,13 +16,12 @@ import org.springframework.stereotype.Component;
 public class UserInfoConsumer {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @KafkaListener(topics = "${spring.kafka.topic.name}" , groupId = "${spring.kafka.consumer.group-id}")
     public void listen(UserInfoDto event){
         try{
-            UserInfo eventEntity =  event.transformToEntity();
-            userRepository.save(eventEntity);
+            userService.createOrUpdate(event);
         }catch (Exception e){
             e.getStackTrace();
         }
