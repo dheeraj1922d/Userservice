@@ -1,7 +1,8 @@
 package net.BuildUi.userservice.deserializers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import net.BuildUi.userservice.entity.UserInfoDto;
+import net.BuildUi.userservice.entity.UserInfo;
+import net.BuildUi.userservice.models.UserInfoDto;
 import org.apache.kafka.common.header.Headers;
 import org.apache.kafka.common.serialization.Deserializer;
 
