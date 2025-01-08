@@ -19,27 +19,32 @@ import net.BuildUi.userservice.entity.UserInfo;
 @Getter
 @Setter
 public class UserInfoDto {
-    @Id
+
     @JsonProperty("user_id")
+    @NonNull
     private String userId;
 
     @JsonProperty("first_name")
+    @NonNull
     private String firstName;
 
     @JsonProperty("last_name")
+    @NonNull
     private String lastName;
 
     @JsonProperty("phone_no")
+    @NonNull
     private Long phoneNo;
 
     @JsonProperty("email")
+    @NonNull
     private String email;
 
     @JsonProperty("profile_photo")
     private String profilePhoto;
 
     public UserInfo transformToEntity(){
-        return UserInfo.builder().firstName(this.firstName).lastName(this.lastName).phoneNo(this.phoneNo)
+        return UserInfo.builder().userId(this.userId).firstName(this.firstName).lastName(this.lastName).phoneNo(this.phoneNo)
                 .email(this.email).profilePhoto(this.profilePhoto).build();
     }
 }

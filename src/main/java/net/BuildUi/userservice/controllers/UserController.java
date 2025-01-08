@@ -1,23 +1,24 @@
 package net.BuildUi.userservice.controllers;
 
+import lombok.RequiredArgsConstructor;
 import net.BuildUi.userservice.models.UserInfoDto;
 import net.BuildUi.userservice.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("user/v1/")
+@RestController
+@RequestMapping("user/v1/")
+@RequiredArgsConstructor
 public class UserController {
 
     @Autowired
     private UserService userService;
 
     @PostMapping("/createOrUpdate")
-    public ResponseEntity<?> createOrUpdate(UserInfoDto userInfoDto){
+    public ResponseEntity<?> createOrUpdate(@RequestBody UserInfoDto userInfoDto){
         try{
             UserInfoDto user = userService.createOrUpdate(userInfoDto);
             return new ResponseEntity<>(user , HttpStatus.OK);

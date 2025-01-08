@@ -19,9 +19,6 @@ import lombok.*;
 @Getter
 @Setter
 public class UserInfo {
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     @Id
     @JsonProperty("user_id")
     private String userId;
