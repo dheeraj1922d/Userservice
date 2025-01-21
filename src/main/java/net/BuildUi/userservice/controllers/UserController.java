@@ -27,8 +27,8 @@ public class UserController {
         }
     }
 
-    @GetMapping("/getUser/{userId}")
-    public ResponseEntity<?> getUser(@Param("userId") String userId){
+    @GetMapping("/getUser")
+    public ResponseEntity<?> getUser(@RequestHeader("X-User-Id") String userId){
         try{
             UserInfoDto user = userService.getUser(userId);
             return new ResponseEntity<>(user , HttpStatus.OK);
